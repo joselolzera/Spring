@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/screnmatch.iml" filepath="$PROJECT_DIR$/.idea/screnmatch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/screnmatch/screnmatch.iml" filepath="$PROJECT_DIR$/screnmatch/screnmatch.iml" />
     </modules>
   </component>
 </project>
