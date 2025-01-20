@@ -1,17 +1,29 @@
 package br.com.alura.screnmatch.modelos;
 import br.com.alura.screnmatch.modelos.DadosSerie;
+import br.com.alura.screnmatch.repository.SerieRepository;
 import com.fasterxml.jackson.annotation.JsonAlias;
+import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.OptionalDouble;
-
+@Entity
+@Table(name = "series")
 public class Serie {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
+    @Column(unique = true)
     private String titulo;
     private Integer totalTemporadas;
     private Double avaliacao;
+    @Enumerated(EnumType.STRING)
     private Categorias genero;
     private String atores;
     private String poster;
     private String sinopse;
+    @Transient
+    private List<Episodio> episodios = new ArrayList<>();
 
     public Serie(DadosSerie dadosSerie) {
         this.titulo = dadosSerie.titulo();
@@ -21,6 +33,18 @@ public class Serie {
         this.atores = dadosSerie.atores();
         this.poster = dadosSerie.poster();
         this.sinopse = dadosSerie.sinopse();
+    }
+
+    public ArrayList<Episodio> getEpisodios() {
+        return (ArrayList<Episodio>) episodios;
+    }
+
+    public void setEpisodios(ArrayList<Episodio> episodios) {
+        this.episodios = episodios;
+    }
+
+    public Serie() {
+        
     }
 
 
